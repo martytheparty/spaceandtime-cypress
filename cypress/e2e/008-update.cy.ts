@@ -121,6 +121,10 @@ describe('update spec', () => {
     .should('be.visible')
     .click();
 
+    cy.get('[data-cy="add-button"]')
+    .should('be.visible')
+    .click();
+
     // close menu
     cy.get('app-menu').click();
 
@@ -130,14 +134,28 @@ describe('update spec', () => {
     .click();
 
     cy.get('[data-cy="update-viz-button"]')
+    .eq(1) // gets the second element
     .click();
 
     cy.get('[data-cy="close-update-fullscreen-button"]')
     .should('be.visible')
     .click();
 
+    cy.get('[data-cy="visualization-component"]')
+    .should('be.visible')
+    .should('have.class', 'configured')
+    .should('have.css', 'left', '200px')
+    .should('have.css', 'position', 'relative');
+
     cy.get('[data-cy="open-update-fullscreen-button"]')
     .should('be.visible')
     .click();
+
+    cy.get('[data-cy="visualization-component"]')
+    .should('be.visible')
+    .should('have.class', 'maximized')
+    .should('have.css', 'left', '200px')
+    .should('have.css', 'position', 'static');
+
   });
 })
