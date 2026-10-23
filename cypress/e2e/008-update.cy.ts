@@ -110,6 +110,21 @@ describe('update spec', () => {
     .should('be.visible')
     .contains('90');
 
+    cy.get('[data-cy="toggle-layout-button"]')
+      .should('be.visible')
+      .click();
+
+    cy.get('[data-cy="toggle-layout-button"]')
+    .should('be.visible')
+    .click();
+
+    cy.get('[data-cy="update-viz-button"]')
+    .click();
+
+    cy.get('[data-cy="zoom-value"]')
+    .should('be.visible')
+    .contains('100');
+
   })
 
   it('ensures that the view mode functionality functions as expected', () => {
@@ -156,6 +171,8 @@ describe('update spec', () => {
     .should('have.class', 'maximized')
     .should('have.css', 'left', '200px')
     .should('have.css', 'position', 'static');
+
+ 
 
   });
 })
